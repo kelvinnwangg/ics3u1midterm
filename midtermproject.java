@@ -6,7 +6,32 @@ import java.awt.Font;
 public class midtermproject{
 	public static void main(String[] args){
 		Console con = new Console("Eggcellent Adventure", 1280, 720);
+		con.setDrawColor(new Color(200, 208, 189));
+		con.fillRect(0, 0, 1280, 720);
 		
+		//Title
+		Font fntCucciolo = con.loadFOnt("Cucciolo.ttf", 80);
+		con.setDrawFont(fntCucciolo);
+		con.setDrawColor(Color.BLACK);
+		con.drawString("Eggcellent Adventure", 230, 100);
+		//Start Game
+		con.setDrawColor(new Color(108, 150, 118));
+		con.fillRoundRect(485, 335, 300, 100, 10, 10);
+		
+		Font fntCucciolo1 = con.loadFont("Cucciolo.ttf", 50);
+		con.setDrawFont(fntCucciolo1);
+		con.setDrawColor(Color.BLACK);
+		con.drawString("Eggcellent Adventure", 500, 350);
+		//Quit Game
+		con.setDrawColor(new Color(108, 150, 118));
+		con.fillRoundRect(485, 465, 300, 100, 10, 10);
+		
+		Font fntCucciolo1 = con.loadFont("Cucciolo.ttf", 50);
+		con.setDrawFont(fntCucciolo1);
+		con.setDrawColor(Color.BLACK);
+		con.drawString("Eggcellent Adventure", 500, 480);
+	}
+	public static void scene1(Console con){
 		//Scene 1
 		String strChoice1;
 		
