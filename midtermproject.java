@@ -10,29 +10,30 @@ public class midtermproject{
 		con.fillRect(0, 0, 1280, 720);
 		
 		//Title
-		Font fntCucciolo = con.loadFOnt("Cucciolo.ttf", 80);
+		Font fntCucciolo = con.loadFont("Cucciolo.ttf", 80);
 		con.setDrawFont(fntCucciolo);
 		con.setDrawColor(Color.BLACK);
 		con.drawString("Eggcellent Adventure", 230, 100);
 		//Start Game
 		con.setDrawColor(new Color(108, 150, 118));
-		con.fillRoundRect(485, 335, 300, 100, 10, 10);
+		con.fillRoundRect(485, 330, 300, 100, 10, 10);
 		
 		Font fntCucciolo1 = con.loadFont("Cucciolo.ttf", 50);
 		con.setDrawFont(fntCucciolo1);
 		con.setDrawColor(Color.BLACK);
-		con.drawString("Eggcellent Adventure", 500, 350);
+		con.drawString("Start Game", 500, 350);
 		//Quit Game
 		con.setDrawColor(new Color(108, 150, 118));
-		con.fillRoundRect(485, 465, 300, 100, 10, 10);
+		con.fillRoundRect(485, 460, 300, 100, 10, 10);
 		
-		Font fntCucciolo1 = con.loadFont("Cucciolo.ttf", 50);
+		Font fntCucciolo2 = con.loadFont("Cucciolo.ttf", 50);
 		con.setDrawFont(fntCucciolo1);
 		con.setDrawColor(Color.BLACK);
-		con.drawString("Eggcellent Adventure", 500, 480);
+		con.drawString("Quit Game", 520, 480);
 	}
 	public static void scene1(Console con){
 		//Scene 1
+		// Add animation for lady goose and character coming in
 		String strChoice1;
 		
 		// Loads and prints --.jpg, Initializes strChoice2 as the input from the user
@@ -52,7 +53,7 @@ public class midtermproject{
 				if(strChoice1.equalsIgnoreCase("Cook")){
 					con.clear();
 					scene2(con);
-					scene2D(con);
+					scene2a(con);
 				// If user enters "help", clears current console, runs scene3
 				}else if(strChoice1.equalsIgnoreCase("Help")){
 					con.clear();
@@ -82,9 +83,10 @@ public class midtermproject{
 			}
 		}
 	}
-	public static void scene2D(Console con){
-		BufferedImage imgScene22 = con.loadImage("Scene22.jpg");
-		con.drawImage(imgScene22, 0, 0);
+	//Scene2a
+	public static void scene2a(Console con){
+		BufferedImage imgScene2a = con.loadImage("Scene2a.jpg");
+		con.drawImage(imgScene2a, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
 		con.clear();
@@ -95,8 +97,8 @@ public class midtermproject{
 		int intCount;
 		int intCount2;
 		for(intCount2 = 0; intCount2 <3; intCount2++){
-		for(intCount = 400; intCount >0; intCount = intCount - 8){
-			con.drawImage(imgScene22, 0, 0);
+		for(intCount = 200; intCount >0; intCount = intCount - 8){
+			con.drawImage(imgScene2a, 0, 0);
 			con.setDrawColor(Color.RED);
 			con.drawString("Game Over", 700, intCount+200);
 			con.repaint();
@@ -105,13 +107,13 @@ public class midtermproject{
 		}
 	}
 			
-		con.sleep(3000);
+		con.sleep(2000);
 		con.closeConsole();
 	}
 		// Scene 3
 	private static void scene3(Console con){
 		String strChoice2;
-		strChoice2 = "";
+
 		// Loads and prints --.jpg, Initializes strChoice2 as the input from the user
 		BufferedImage imgScene3= con.loadImage("Scene3.jpg");
 		con.drawImage(imgScene3, 0, 0);
@@ -122,10 +124,9 @@ public class midtermproject{
 		con.sleep(1500);
 		con.println("You walk for a bit and come across some strange boot prints...");
 		con.sleep(1500);
-		
+		con.println("Do you choose to 'ignore' the footprint or further 'look into' it");
+		strChoice2 = con.readLine();
 		while(!strChoice2.equalsIgnoreCase("Ignore") || !strChoice2.equalsIgnoreCase("look into")){
-			con.println("Do you choose to 'ignore' the footprint or further 'look into' it");
-			strChoice2 = con.readLine();
 				if(strChoice2.equalsIgnoreCase("Ignore")){
 					con.clear();
 					scene4(con);
@@ -136,6 +137,7 @@ public class midtermproject{
 			}
 	}
 	// Scene 4
+	// Add animation for ghost going out of body
 	public static void scene4(Console con){
 		// Loads and prints --.jpg, 
 		BufferedImage imgScene4= con.loadImage("Scene4.jpg");
@@ -147,7 +149,7 @@ public class midtermproject{
 		con.sleep(1500);
 		con.println("You continue on your useless \" search\"  and eventually starve to death");
 		con.sleep(1500);
-		con.println(" GAME OVER ");
+		con.println("GAME OVER");
 		con.sleep(3000);
 		con.closeConsole();
 	}
@@ -213,6 +215,7 @@ public class midtermproject{
 	}
 	}
 	// Scene 7
+	// Add animation for croc coming to character
 	public static void scene7(Console con){
 		BufferedImage imgScene7= con.loadImage("Scene7.jpg");
 		con.drawImage(imgScene7, 0, 0);
@@ -233,11 +236,12 @@ public class midtermproject{
 		con.closeConsole();
 	}
 	// Scene8
+	// add animation for character walking to shed
 	public static void scene8(Console con){
 		BufferedImage imgScene8= con.loadImage("Scene8.jpg");
 		con.drawImage(imgScene8, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 720);
+		con.fillRect(0, 0, 1280, 120);
 		
 		char chrKey2;
 		con.println("You pick the path on the right...");
@@ -261,12 +265,14 @@ public class midtermproject{
 }
 	// Scene 8a
 	public static void scene8a(Console con){
-		BufferedImage imgScene8= con.loadImage("Scene8.jpg");
-		con.drawImage(imgScene8, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 280);
+		con.fillRect(0, 0, 1280, 720);
 		int intRandom;
-
+		String strWord;
+		String strBack;
+		int intLength;
+		String strLetter;
+		int intCount;
 		// Choices for Level 1 difficulty questions
 		int intChoice5;
 		int intChoice6;
@@ -282,50 +288,85 @@ public class midtermproject{
 		if(intRandom == 1){
 			con.println("What is 2+9?");
 			intChoice5 = con.readInt();
-			if(intChoice5 == 11){
-				con.println("Congrats, next question");
-			}else{
-				con.clear();
-				scene9(con);
-			}
+				if(intChoice5 == 11){
+					con.println("Congrats, next question");
+				}else{
+					con.clear();
+					scene9(con);
+				}
 			con.println("What is 2*7?");
 			intChoice6 = con.readInt();
-			if(intChoice6 == 14){
-				con.println("Congrats, next question");
-			}else{
-				con.clear();
-				scene9(con);
-			}
-			con.println("Is 'ANNA' a palindrome?");
+				if(intChoice6 == 14){
+					con.println("Congrats, next question");
+				}else{
+					con.clear();
+					scene9(con);
+				}
+				
+			con.println("What is an example of a palindrome?");
 			strChoice7 = con.readLine();
-			if(strChoice7.equalsIgnoreCase("yes")){
+			intLength = strChoice7.length();
+			strBack = "";
+			for(intCount = intLength; intCount >=1; intCount--){
+				strLetter = strChoice7.substring(intCount - 1, intCount);
+				strBack = strBack + strLetter;
+			}
+			if(strChoice7.equals(strBack)){
 				con.println("Congrats, next question");
 			}else{
 				con.clear();
 				scene9(con);
 			}
+			
 			con.println("What is 3.5 + 1.8?");
 			dblChoice8 = con.readDouble();
-			if(dblChoice8 == 5.3){
-				con.println("CONGRATS you've passed... the easy version. *side eye*");
-				con.clear();
-				scene10(con);
-			}else{
-				con.clear();
-				scene9(con);
-			}
+				if(dblChoice8 == 5.3){
+					con.println("CONGRATS you've passed... the easy version. *side eye*");
+					con.clear();
+					scene10(con);
+				}else{
+					con.clear();
+					scene9(con);
+				}
 		}else if(intRandom == 2){
 			con.println("What is 'pi/3' (radians) in degrees?");
 			intChoice9 = con.readInt();
+				if(intChoice9 == 60){
+					con.println("Congrats, next question");
+				}else{
+					con.clear();
+					scene9(con);
+				}
 			con.println("What is 2(3-1)+12");
 			intChoice10 = con.readInt();
+				if(intChoice10 == 16){
+					con.println("Congrats, next question");
+				}else{
+					con.clear();
+					scene9(con);
+				}
 			con.println("What are the first 4 digits in 'pi' ?");
 			dblChoice11 = con.readDouble();
+				if(dblChoice11 == 3.141){
+					con.println("Congrats, next question");
+				}else{
+					con.clear();
+					scene9(con);
+				}
 			con.println("What is 3.999 +6.333?");
 			dblChoice12 = con.readDouble();
+				if(dblChoice12 == 10.332){
+					con.println("CONGRATS you've passed...!");
+					con.clear();
+					scene10(con);
+				}else{
+					con.clear();
+					scene9(con);
+			}
 		}
 	}
 	// Scene 9
+	// Add animation for clouds when harry says poof
 	public static void scene9(Console con){
 		BufferedImage imgScene9= con.loadImage("Scene9.jpg");
 		con.drawImage(imgScene9, 0, 0);
@@ -371,20 +412,19 @@ public class midtermproject{
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
 		
-		BufferedImage imgGoose = con.loadImage("goose.png");
-		con.drawImage(imgGoose, 50, 100);
-		
-		char chrKey4;
-		String strChoice13;
+		BufferedImage imgWizard = con.loadImage("wizard.png");
+		con.drawImage(imgWizard, 50, 100);
 		
 		con.println("'You must PAY FOR THIS!!!' you say...");
 		con.sleep(1500);
 		con.println("Click 'd' to make Harry Pottuh DISSAPEARRRRRRRR!");
 		
+		char chrKey4;
+		String strChoice13;
+		
 		while(true){
 			chrKey4 = con.currentChar();
 			if(chrKey4 == 'd'){
-				con.repaint();
 				con.drawImage(imgScene11, 0, 0);
 				con.setDrawColor(new Color(200,208,189));
 				con.fillRect(0, 0, 1280, 120);
@@ -426,11 +466,12 @@ public class midtermproject{
 		
 	}
 	// Scene 13
+	// Add animation character and egg both move towards goose
 	public static void scene13(Console con){
-		BufferedImage imgScene11= con.loadImage("Scene11.jpg");
-		con.drawImage(imgScene11, 0, 0);
+		BufferedImage imgScene13= con.loadImage("Scene13.jpg");
+		con.drawImage(imgScene13, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
+		con.fillRect(0, 0, 1280, 200);
 		
 		con.println("You choose to manage the pain from the hunger and give the egg back to Lady Goose");
 		con.sleep(1000);
@@ -441,9 +482,19 @@ public class midtermproject{
 		con.println("==============================================================");
 		con.sleep(1000);
 		con.println("She gives you plenty of food and gold coins, enough for your family, your kids, and their kids!");
-		
+		scene14(con);
 	}
-	public static void scene14(Console con);
-	BufferedImage imgScene14= con.loadImage("Scene14.jpg");
-		con.drawImage(imgScene14, 0, 0);
+	//Scene 14
+	public static void scene14(Console con){
+		con.setDrawColor(new Color(200, 208, 189));
+		con.fillRect(0, 0, 1280, 720);
+		
+		//End Screen Title
+		Font fntCucciolo3 = con.loadFont("Cucciolo.ttf", 80);
+		con.setDrawFont(fntCucciolo3);
+		con.setDrawColor(Color.BLACK);
+		con.drawString("WINNER WINNER CHICKEN DINNER!!", 70, 280);
+		con.sleep(6000);
+		con.closeConsole();
+	}
 }
