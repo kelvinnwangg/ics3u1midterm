@@ -30,15 +30,43 @@ public class midtermproject{
 		con.setDrawFont(fntCucciolo1);
 		con.setDrawColor(Color.BLACK);
 		con.drawString("Quit Game", 520, 480);
-	}
-	public static void scene1(Console con){
-		//Scene 1
-		// Add animation for lady goose and character coming in
-		String strChoice1;
 		
-		// Loads and prints --.jpg, Initializes strChoice2 as the input from the user
+		con.repaint();
+		//Buttons
+		int mousex = 0;
+		int mousey = 0;
+		int mouseC = 0;
+		int value;
+		
+		while (mouseC != 1){
+		mousex = con.currentMouseX();
+		mousey = con.currentMouseY();
+		mouseC = con.currentMouseButton();
+			
+		}
+			if(mousex >=485 && mousex <=785 && mousey >=333 && mousey <=433){
+			scene1(con);
+		}else if(mousex >=485 && mousex <=785 && mousey >=463 && mousey <=563){
+			con.sleep(500);
+			con.closeConsole();
+		}
+
+	}
+	// Scene1
+	public static void scene1(Console con){
+		String strChoice1;
+
 		BufferedImage imgScene1 = con.loadImage("Scene1.jpg");
+		BufferedImage imggoose = con.loadImage("goose.png");
 		con.drawImage(imgScene1, 0, 0);
+		
+		int intCount3;
+			for(intCount3 = 1290; intCount3 >= 450; intCount3--){
+				con.drawImage(imgScene1, 0, 0);
+				con.drawImage(imggoose, intCount3, 450);
+				con.repaint();
+				con.sleep(2);
+		}
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
 		con.setTextColor(Color.BLACK);
@@ -46,6 +74,7 @@ public class midtermproject{
 		con.sleep(2500);
 		con.println("... Harry Pottuh!");
 		con.sleep(1500);
+		
 			while(true){
 				con.println("Do you, as a hungry villager, decide to 'HELP' Lady Goose find her egg or 'COOK' her up for dinner?");
 				strChoice1 = con.readLine();
@@ -69,7 +98,7 @@ public class midtermproject{
 		BufferedImage imgScene2 = con.loadImage("Scene2.jpg");
 		con.drawImage(imgScene2, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
+		con.fillRect(0, 0, 1280, 60);
 		con.setTextColor(Color.BLACK);
 		con.println("You are starving and decide to catch and cook Lady Goose up for dinner...");
 		con.sleep(500);
@@ -88,7 +117,7 @@ public class midtermproject{
 		BufferedImage imgScene2a = con.loadImage("Scene2a.jpg");
 		con.drawImage(imgScene2a, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
+		con.fillRect(0, 0, 1280, 50);
 		con.clear();
 		con.println("MmMmMmMMMmMmm... tastes goo-");
 		con.sleep(2000);
@@ -99,15 +128,16 @@ public class midtermproject{
 		for(intCount2 = 0; intCount2 <3; intCount2++){
 		for(intCount = 200; intCount >0; intCount = intCount - 8){
 			con.drawImage(imgScene2a, 0, 0);
+			con.setDrawColor(new Color(200,208,189));
+			con.fillRect(0, 0, 1280, 50);
 			con.setDrawColor(Color.RED);
-			con.drawString("Game Over", 700, intCount+200);
+			con.drawString("Game Over", 300, intCount+200);
 			con.repaint();
-			// 30 fps = 1000ms/30 = 33ms about
 			con.sleep(33);
 		}
 	}
 			
-		con.sleep(2000);
+		con.sleep(1500);
 		con.closeConsole();
 	}
 		// Scene 3
@@ -137,10 +167,10 @@ public class midtermproject{
 			}
 	}
 	// Scene 4
-	// Add animation for ghost going out of body
 	public static void scene4(Console con){
 		// Loads and prints --.jpg, 
 		BufferedImage imgScene4= con.loadImage("Scene4.jpg");
+		BufferedImage imgGhost= con.loadImage("ghost.png");
 		con.drawImage(imgScene4, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
@@ -150,7 +180,23 @@ public class midtermproject{
 		con.println("You continue on your useless \" search\"  and eventually starve to death");
 		con.sleep(1500);
 		con.println("GAME OVER");
-		con.sleep(3000);
+		
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 120);
+
+		int intCount;
+		int intCount2;
+		for(intCount2 = 0; intCount2 <3; intCount2++){
+		for(intCount = 350; intCount >0; intCount = intCount - 2){
+			con.drawImage(imgScene4, 0, 0);
+			con.setDrawColor(new Color(200,208,189));
+			con.fillRect(0, 0, 1280, 120);
+			con.drawImage(imgGhost, 560, intCount+200);
+			con.repaint();
+			con.sleep(33);
+		}
+	}
+		con.sleep(1000);
 		con.closeConsole();
 	}
 	// Scene 5
@@ -241,7 +287,7 @@ public class midtermproject{
 		BufferedImage imgScene8= con.loadImage("Scene8.jpg");
 		con.drawImage(imgScene8, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
+		con.fillRect(0, 0, 1280, 150);
 		
 		char chrKey2;
 		con.println("You pick the path on the right...");
@@ -284,7 +330,8 @@ public class midtermproject{
 		double dblChoice11;
 		double dblChoice12;
 		
-		intRandom = (int) Math.random()*2+1;
+		intRandom = (int)(Math.random()*2+1);
+		con.println(intRandom);
 		if(intRandom == 1){
 			con.println("What is 2+9?");
 			intChoice5 = con.readInt();
