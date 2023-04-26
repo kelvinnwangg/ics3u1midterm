@@ -1,3 +1,4 @@
+// Version 0.01 Eggcellent Adventure
 import arc.*;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -58,15 +59,25 @@ public class midtermproject{
 
 		BufferedImage imgScene1 = con.loadImage("Scene1.jpg");
 		BufferedImage imggoose = con.loadImage("goose.png");
+		BufferedImage imgcharacter = con.loadImage("character.png");
 		con.drawImage(imgScene1, 0, 0);
+		int intGoose = 1290;
+		int intCharacter = -10;
 		
-		int intCount3;
-			for(intCount3 = 1290; intCount3 >= 450; intCount3--){
+		while(intGoose >=450 || intCharacter <=90){
 				con.drawImage(imgScene1, 0, 0);
-				con.drawImage(imggoose, intCount3, 450);
+				con.drawImage(imggoose, intGoose, 450);
+				con.drawImage(imgcharacter, intCharacter, 500);
 				con.repaint();
 				con.sleep(2);
-		}
+				if (intGoose >= 450) {
+					intGoose--;
+					}
+				if (intCharacter <= 90){
+				intCharacter++;
+			}
+			}
+				
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
 		con.setTextColor(Color.BLACK);
@@ -261,12 +272,13 @@ public class midtermproject{
 	}
 	}
 	// Scene 7
-	// Add animation for croc coming to character
 	public static void scene7(Console con){
 		BufferedImage imgScene7= con.loadImage("Scene7.jpg");
+		BufferedImage imgCroc= con.loadImage("crocodile.png");
 		con.drawImage(imgScene7, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
+		int intCroc = 1280;
 		
 		con.println("On your walk beside the swamp, you see something poking out of the water...");
 		con.sleep(1500);
@@ -275,6 +287,16 @@ public class midtermproject{
 		con.println("WRONG");
 		con.sleep(1500);
 		con.println("The 'thing' was an aligator and it jumps out of the water and eats you");
+		
+		for(intCroc = 1280; intCroc >=600; intCroc = intCroc -5){
+			con.drawImage(imgScene7, 0, 0);
+			con.setDrawColor(new Color(200,208,189));
+			con.fillRect(0, 0, 1280, 120);
+			con.drawImage(imgCroc, intCroc, 400);
+			con.repaint();
+			con.sleep(33);
+		}
+		
 		con.println("You get chomp chomped");
 		con.sleep(1500);
 		con.println(" GAME OVER ");
@@ -282,18 +304,29 @@ public class midtermproject{
 		con.closeConsole();
 	}
 	// Scene8
-	// add animation for character walking to shed
 	public static void scene8(Console con){
 		BufferedImage imgScene8= con.loadImage("Scene8.jpg");
+		BufferedImage imgCharacter1= con.loadImage("character.png");
 		con.drawImage(imgScene8, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 150);
+		int intCharacter1 = -10;
 		
 		char chrKey2;
 		con.println("You pick the path on the right...");
 		con.sleep(1500);
 		con.println("It DOES lead to a wizard shed, a seemingly abandoned one");
-		con.sleep(1500);
+			for(intCharacter1 = -10; intCharacter1 <=300; intCharacter1 = intCharacter1+5){
+				con.drawImage(imgScene8, 0, 0);
+				con.setDrawColor(new Color(200,208,189));
+				con.fillRect(0, 0, 1280, 120);
+				con.drawImage(imgCharacter1, intCharacter1, 400);
+				con.repaint();
+				con.sleep(33);
+			}
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 170);
+		con.sleep(1000);
 		con.println("You find Harry Pottuh and DEMAND the egg back, but he won't give in");
 		con.sleep(1500);
 		con.println("He offers you a deal, testing your knowledge");
@@ -331,8 +364,9 @@ public class midtermproject{
 		double dblChoice12;
 		
 		intRandom = (int)(Math.random()*2+1);
-		con.println(intRandom);
 		if(intRandom == 1){
+			con.println("Wow... lucky... you got the eAsY questions");
+			con.sleep(1000);
 			con.println("What is 2+9?");
 			intChoice5 = con.readInt();
 				if(intChoice5 == 11){
@@ -376,6 +410,8 @@ public class midtermproject{
 					scene9(con);
 				}
 		}else if(intRandom == 2){
+			con.println("Unlucky... You got the hArDeR questions");
+			con.sleep(1000);
 			con.println("What is 'pi/3' (radians) in degrees?");
 			intChoice9 = con.readInt();
 				if(intChoice9 == 60){
@@ -413,18 +449,20 @@ public class midtermproject{
 		}
 	}
 	// Scene 9
-	// Add animation for clouds when harry says poof
 	public static void scene9(Console con){
 		BufferedImage imgScene9= con.loadImage("Scene9.jpg");
+		BufferedImage imgcloud= con.loadImage("cloud.jpg");
 		con.drawImage(imgScene9, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
+		con.fillRect(0, 0, 1280, 140);
 		
 		con.println(" 'Looks like you got the question wrong...' says Harry");
 		con.sleep(1500);
 		con.println(" 'I will be on my way now! You will never see this egg again HAHAHAHA' ");
 		con.sleep(1500);
 		con.println(" *snaps fingers* ");
+		con.drawImage(imgcloud, 300, 300);
+		con.repaint();
 		con.println(" *POOF* you disappear");
 		con.println(" GAME OVER ");
 		con.sleep(3000);
@@ -456,11 +494,10 @@ public class midtermproject{
 	public static void scene11(Console con){
 		BufferedImage imgScene11= con.loadImage("Scene11.jpg");
 		con.drawImage(imgScene11, 0, 0);
-		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
-		
 		BufferedImage imgWizard = con.loadImage("wizard.png");
 		con.drawImage(imgWizard, 50, 100);
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 120);
 		
 		con.println("'You must PAY FOR THIS!!!' you say...");
 		con.sleep(1500);
@@ -475,6 +512,7 @@ public class midtermproject{
 				con.drawImage(imgScene11, 0, 0);
 				con.setDrawColor(new Color(200,208,189));
 				con.fillRect(0, 0, 1280, 120);
+				con.repaint();
 		}
 			con.clear();
 			con.println("Finally that annoying man is out of the way. I can FINALLY give this egg back to Lady Goose!");
@@ -500,10 +538,10 @@ public class midtermproject{
 		con.fillRect(0, 0, 1280, 120);
 		
 		con.println("You can't take it anymore...");
+		con.sleep(1500);
 		con.println("You are TOOOOO hungry so you cook up the golden egg and-");
 		con.println(".........................");
 		con.sleep(3000);
-		
 		con.drawImage(imgScene12a, 0, 0);
 		con.println("YOU DIE due to salmonella");
 		con.sleep(1500);
@@ -513,35 +551,56 @@ public class midtermproject{
 		
 	}
 	// Scene 13
-	// Add animation character and egg both move towards goose
 	public static void scene13(Console con){
 		BufferedImage imgScene13= con.loadImage("Scene13.jpg");
+		BufferedImage imgcharacter2= con.loadImage("character.png");
+		BufferedImage imgEgg= con.loadImage("goldenegg.png");
 		con.drawImage(imgScene13, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 200);
 		
+		int intEgg = -10;
+		int intCharacter = -10;
+		while(intEgg <=550 || intCharacter <= 550){
+			con.setDrawColor(new Color(200,208,189));
+			con.fillRect(0, 0, 1280, 200);
+			con.drawImage(imgScene13, 0, 0);
+			con.drawImage(imgEgg, intEgg, 500);
+			con.drawImage(imgcharacter2, intEgg - 5, 500);
+			con.repaint();
+			con.sleep(2);
+				if (intEgg <=550) {
+					intEgg++;
+					}
+				if (intCharacter <= 550){
+				intCharacter++;
+					}
+		}
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 200);
+		
 		con.println("You choose to manage the pain from the hunger and give the egg back to Lady Goose");
-		con.sleep(1000);
+		con.sleep(3000);
 		con.println("==============================================================");
-		con.println("								oh my gaaaawd! Thank you so much honey!									   ");
-		con.println("											I think you deserve a reward!													   ");
-		con.println("														said Lady Goose														   ");
+		con.println("	oh my gaaaawd! Thank you so much honey!									   ");
+		con.println("			I think you deserve a reward!													   ");
+		con.println("					said Lady Goose														   ");
 		con.println("==============================================================");
-		con.sleep(1000);
-		con.println("She gives you plenty of food and gold coins, enough for your family, your kids, and their kids!");
+		con.println("She gives you plenty of food and gold coins, enough for your family and your kids!");
+		con.sleep(3000);
+		con.clear();
 		scene14(con);
 	}
 	//Scene 14
 	public static void scene14(Console con){
 		con.setDrawColor(new Color(200, 208, 189));
 		con.fillRect(0, 0, 1280, 720);
-		
 		//End Screen Title
-		Font fntCucciolo3 = con.loadFont("Cucciolo.ttf", 80);
-		con.setDrawFont(fntCucciolo3);
+		Font fntCucciolo4 = con.loadFont("Cucciolo.ttf", 80);
+		con.setDrawFont(fntCucciolo4);
 		con.setDrawColor(Color.BLACK);
 		con.drawString("WINNER WINNER CHICKEN DINNER!!", 70, 280);
-		con.sleep(6000);
+		con.sleep(10000);
 		con.closeConsole();
 	}
 }
