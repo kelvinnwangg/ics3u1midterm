@@ -33,12 +33,12 @@ public class midtermproject{
 		con.drawString("Quit Game", 520, 480);
 		
 		con.repaint();
-		//Buttons
+		//Button Variables
 		int mousex = 0;
 		int mousey = 0;
 		int mouseC = 0;
 		int value;
-		
+		//Mouse location/ clicks
 		while (mouseC != 1){
 		mousex = con.currentMouseX();
 		mousey = con.currentMouseY();
@@ -56,14 +56,15 @@ public class midtermproject{
 	// Scene1
 	public static void scene1(Console con){
 		String strChoice1;
-
+		// Loads images
 		BufferedImage imgScene1 = con.loadImage("Scene1.jpg");
 		BufferedImage imggoose = con.loadImage("goose.png");
 		BufferedImage imgcharacter = con.loadImage("character.png");
 		con.drawImage(imgScene1, 0, 0);
+		//Initializing variables
 		int intGoose = 1290;
 		int intCharacter = -10;
-		
+		//Moves goose to x=450 (from right to left), Moves character to x=90(from right to left)
 		while(intGoose >=450 || intCharacter <=90){
 				con.drawImage(imgScene1, 0, 0);
 				con.drawImage(imggoose, intGoose, 450);
@@ -77,7 +78,7 @@ public class midtermproject{
 				intCharacter++;
 			}
 			}
-				
+		//Redraws background for text
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
 		con.setTextColor(Color.BLACK);
@@ -86,23 +87,24 @@ public class midtermproject{
 		con.println("... Harry Pottuh!");
 		con.sleep(1500);
 		
-			while(true){
-				con.println("Do you, as a hungry villager, decide to 'HELP' Lady Goose find her egg or 'COOK' her up for dinner?");
-				strChoice1 = con.readLine();
-				//If the user enters "cook", clears current console, runs scene2, runs scene22
-				if(strChoice1.equalsIgnoreCase("Cook")){
-					con.clear();
-					scene2(con);
-					scene2a(con);
-				// If user enters "help", clears current console, runs scene3
-				}else if(strChoice1.equalsIgnoreCase("Help")){
-					con.clear();
-					scene3(con);
-				}
+		while(true){
+			con.println("Do you, as a hungry villager, decide to 'HELP' Lady Goose find her egg or 'COOK' her up for dinner?");
+			strChoice1 = con.readLine();
+			//If the user enters "cook", clears current console, runs scene2, runs scene22
+			if(strChoice1.equalsIgnoreCase("Cook")){
+				con.clear();
+				scene2(con);
+				scene2a(con);
+			// If user enters "help", clears current console, runs scene3
+			}else if(strChoice1.equalsIgnoreCase("Help")){
+				con.clear();
+				scene3(con);
 			}
 		}
+	}
 		//Scene 2
 	public static void scene2(Console con){
+		//variables
 		char chrKey1;
 		
 		//Loads and prints --.jpg
@@ -115,7 +117,7 @@ public class midtermproject{
 		con.sleep(500);
 		con.println("Click 'c' to continue...");
 		
-		// Grabs the current keyboard input, if input is "c", runs Line 24
+		// Grabs the current keyboard input, if input is "c", runs next scene using RETURN command
 		while(true){
 			chrKey1 = con.currentChar();
 			if(chrKey1 == 'c'){
@@ -125,6 +127,7 @@ public class midtermproject{
 	}
 	//Scene2a
 	public static void scene2a(Console con){
+		//Loads Images
 		BufferedImage imgScene2a = con.loadImage("Scene2a.jpg");
 		con.drawImage(imgScene2a, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
@@ -133,9 +136,10 @@ public class midtermproject{
 		con.println("MmMmMmMMMmMmm... tastes goo-");
 		con.sleep(2000);
 		con.println("BLEH");
-		
+		//variables
 		int intCount;
 		int intCount2;
+		//Moves the string 'game over' down to up 3 times, then  closes the console
 		for(intCount2 = 0; intCount2 <3; intCount2++){
 		for(intCount = 200; intCount >0; intCount = intCount - 8){
 			con.drawImage(imgScene2a, 0, 0);
@@ -153,6 +157,7 @@ public class midtermproject{
 	}
 		// Scene 3
 	private static void scene3(Console con){
+		//variables
 		String strChoice2;
 
 		// Loads and prints --.jpg, Initializes strChoice2 as the input from the user
@@ -166,7 +171,9 @@ public class midtermproject{
 		con.println("You walk for a bit and come across some strange boot prints...");
 		con.sleep(1500);
 		con.println("Do you choose to 'ignore' the footprint or further 'look into' it");
+		//reads input and sets strChoice2 as input
 		strChoice2 = con.readLine();
+		//If user types ignore then goes to scene 4, if user types look into goes to scene 5
 		while(!strChoice2.equalsIgnoreCase("Ignore") || !strChoice2.equalsIgnoreCase("look into")){
 				if(strChoice2.equalsIgnoreCase("Ignore")){
 					con.clear();
@@ -185,18 +192,18 @@ public class midtermproject{
 		con.drawImage(imgScene4, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
+		//Variables
+		int intCount;
+		int intCount2;
 		
 		con.println("Oh no... You chose to ignore the OBVIOUS clue.");
 		con.sleep(1500);
 		con.println("You continue on your useless \" search\"  and eventually starve to death");
 		con.sleep(1500);
 		con.println("GAME OVER");
-		
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 120);
-
-		int intCount;
-		int intCount2;
+		
 		for(intCount2 = 0; intCount2 <3; intCount2++){
 		for(intCount = 350; intCount >0; intCount = intCount - 2){
 			con.drawImage(imgScene4, 0, 0);
@@ -231,13 +238,15 @@ public class midtermproject{
 		con.sleep(1500);
 		con.println("Which path do you go down? 1 - Left OR 2 - Right (IF YOU DONT ENTER A VALID NUMBER YOU DIE)");
 		intChoice3 = con.readInt();
-		
+		//If input is 1, clears console and runs scene 6
 		if(intChoice3 == 1){
 			con.clear();
 			scene6(con);
+		// if input is 2, clears consoel and runs scene8
 		}else if(intChoice3 == 2){
 			con.clear();
 			scene8(con);
+		// if inputs any other numeber, prints con.println's and closes console
 		}else{
 			con.println("What did i say...");
 			con.sleep(1000);
@@ -265,6 +274,7 @@ public class midtermproject{
 		
 		while(true){
 			chrLetter = con.currentChar();
+		// if user clicks 'c', runs scene 7
 		if(chrLetter == 'c'){
 			con.clear();
 			scene7(con);
@@ -336,6 +346,7 @@ public class midtermproject{
 		
 		while(true){
 			chrKey2 = con.currentChar();
+		// if user clicks 'c' runs scene 8a
 		if(chrKey2 == 'c'){
 			con.clear();
 			scene8a(con);
@@ -364,6 +375,7 @@ public class midtermproject{
 		double dblChoice12;
 		
 		intRandom = (int)(Math.random()*2+1);
+		// if random number gens 1, runs code below
 		if(intRandom == 1){
 			con.println("Wow... lucky... you got the eAsY questions");
 			con.sleep(1000);
@@ -409,6 +421,7 @@ public class midtermproject{
 					con.clear();
 					scene9(con);
 				}
+		// if random number gens 2, runs code below
 		}else if(intRandom == 2){
 			con.println("Unlucky... You got the hArDeR questions");
 			con.sleep(1000);
@@ -451,7 +464,7 @@ public class midtermproject{
 	// Scene 9
 	public static void scene9(Console con){
 		BufferedImage imgScene9= con.loadImage("Scene9.jpg");
-		BufferedImage imgcloud= con.loadImage("cloud.jpg");
+		BufferedImage imgcloud= con.loadImage("cloud.png");
 		con.drawImage(imgScene9, 0, 0);
 		con.setDrawColor(new Color(200,208,189));
 		con.fillRect(0, 0, 1280, 140);
@@ -461,9 +474,10 @@ public class midtermproject{
 		con.println(" 'I will be on my way now! You will never see this egg again HAHAHAHA' ");
 		con.sleep(1500);
 		con.println(" *snaps fingers* ");
-		con.drawImage(imgcloud, 300, 300);
-		con.repaint();
+		con.drawImage(imgcloud, 100, 400);
+		con.sleep(1000);
 		con.println(" *POOF* you disappear");
+		con.sleep(1500);
 		con.println(" GAME OVER ");
 		con.sleep(3000);
 		con.closeConsole();
@@ -479,11 +493,12 @@ public class midtermproject{
 		con.println("'Awh man...' says Harry");
 		con.sleep(1500);
 		con.println("I guess you beat my little game...");
-		con.sleep(1000);
+		con.sleep(1500);
 		con.println("Click 'c' to continue");
 		
 		while(true){
 			chrKey3 = con.currentChar();
+		// if user clicks 'c' runs scene 11
 		if(chrKey3 == 'c'){
 			con.clear();
 			scene11(con);
@@ -495,40 +510,39 @@ public class midtermproject{
 		BufferedImage imgScene11= con.loadImage("Scene11.jpg");
 		con.drawImage(imgScene11, 0, 0);
 		BufferedImage imgWizard = con.loadImage("wizard.png");
-		con.drawImage(imgWizard, 50, 100);
+		con.drawImage(imgWizard, 670, 400);
+		BufferedImage imgcloud = con.loadImage("cloud.png");
 		con.setDrawColor(new Color(200,208,189));
-		con.fillRect(0, 0, 1280, 120);
-		
-		con.println("'You must PAY FOR THIS!!!' you say...");
-		con.sleep(1500);
-		con.println("Click 'd' to make Harry Pottuh DISSAPEARRRRRRRR!");
+		con.fillRect(0, 0, 1280, 50);
 		
 		char chrKey4;
 		String strChoice13;
-		
-		while(true){
-			chrKey4 = con.currentChar();
-			if(chrKey4 == 'd'){
-				con.drawImage(imgScene11, 0, 0);
-				con.setDrawColor(new Color(200,208,189));
-				con.fillRect(0, 0, 1280, 120);
-				con.repaint();
-		}
+		//Harry becomes bigger instead of disappearing |
+		con.println("'You must PAY FOR THIS!!!' you say...");
+		con.println("Harry disappears...");
+		con.sleep(1000);
+		con.drawImage(imgScene11, 0, 0);
+		con.drawImage(imgcloud, 670, 380);
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 120);
+		con.clear();
+		con.sleep(500);
+		con.println("Finally that annoying man is out of the way. I can FINALLY give this egg back to Lady Goose!");
+		con.sleep(1500);
+		con.println("... or should I...");
+		con.sleep(1500);
+		con.println("You're starving right now... Do you choose to 'give' the egg back or 'cook' it up?");
+		strChoice13 = con.readLine();
+		// if user inputs give, runs scene 13
+		if(strChoice13.equalsIgnoreCase("give")){
 			con.clear();
-			con.println("Finally that annoying man is out of the way. I can FINALLY give this egg back to Lady Goose!");
-			con.println("... or should I...");
-			con.println("You're starving right now... Do you choose to 'give' the egg back or 'cook' it up?");
-			strChoice13 = con.readLine();
-			
-			if(strChoice13.equalsIgnoreCase("give")){
-				con.clear();
-				scene13(con);
-			}else if(strChoice13.equalsIgnoreCase("cook")){
-				con.clear();
-				scene12(con);
-			}
+			scene13(con);
+		// if user inputs cook, runs scene 12
+		}else if(strChoice13.equalsIgnoreCase("cook")){
+			con.clear();
+			scene12(con);
+		}
 	}
-}
 	// Scene 12
 	public static void scene12(Console con){
 		BufferedImage imgScene12= con.loadImage("Scene12.jpg");
@@ -539,10 +553,12 @@ public class midtermproject{
 		
 		con.println("You can't take it anymore...");
 		con.sleep(1500);
-		con.println("You are TOOOOO hungry so you cook up the golden egg and-");
+		con.println("You are TOO hungry so you cook up the golden egg and-");
 		con.println(".........................");
 		con.sleep(3000);
 		con.drawImage(imgScene12a, 0, 0);
+		con.setDrawColor(new Color(200,208,189));
+		con.fillRect(0, 0, 1280, 100);
 		con.println("YOU DIE due to salmonella");
 		con.sleep(1500);
 		con.println(" GAME OVER ");
@@ -569,6 +585,7 @@ public class midtermproject{
 			con.drawImage(imgcharacter2, intEgg - 5, 500);
 			con.repaint();
 			con.sleep(2);
+			// moves egg and character to x=550
 				if (intEgg <=550) {
 					intEgg++;
 					}
@@ -580,14 +597,16 @@ public class midtermproject{
 		con.fillRect(0, 0, 1280, 200);
 		
 		con.println("You choose to manage the pain from the hunger and give the egg back to Lady Goose");
+		con.println("");
 		con.sleep(3000);
 		con.println("==============================================================");
-		con.println("	oh my gaaaawd! Thank you so much honey!									   ");
-		con.println("			I think you deserve a reward!													   ");
-		con.println("					said Lady Goose														   ");
+		con.println("	oh my gaaaawd! Thank you so much honey! ");
+		con.println("	    I think you deserve a reward!	");
+		con.println("		  said Lady Goose ");
 		con.println("==============================================================");
+		con.println("");
 		con.println("She gives you plenty of food and gold coins, enough for your family and your kids!");
-		con.sleep(3000);
+		con.sleep(8000);
 		con.clear();
 		scene14(con);
 	}
@@ -600,6 +619,7 @@ public class midtermproject{
 		con.setDrawFont(fntCucciolo4);
 		con.setDrawColor(Color.BLACK);
 		con.drawString("WINNER WINNER CHICKEN DINNER!!", 70, 280);
+		con.repaint();
 		con.sleep(10000);
 		con.closeConsole();
 	}
